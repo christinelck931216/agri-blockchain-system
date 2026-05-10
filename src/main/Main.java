@@ -13,7 +13,7 @@ public class Main { // 主程式類別
     public static void main(String[] args) { // Java 程式執行入口
 
        
-        // 1. 建立供應鏈參與者
+        //  建立供應鏈參與者
       
 
         Participant farmer = new Participant(
@@ -41,7 +41,7 @@ public class Main { // 主程式類別
         );
 
      
-        // 2. 建立第一批交易紀錄（第一個正式區塊）
+        //  建立第一批交易紀錄（第一個正式區塊）
         
 
         List<TransactionRecord> block1Transactions = new ArrayList<>();
@@ -87,7 +87,7 @@ public class Main { // 主程式類別
         block1Transactions.add(record3); // 將第 3 筆交易加入區塊 1 清單
 
        
-        // 3. 建立第二批交易紀錄（第二個正式區塊）
+        //  建立第二批交易紀錄（第二個正式區塊）
        
 
         List<TransactionRecord> block2Transactions = new ArrayList<>();
@@ -119,25 +119,25 @@ public class Main { // 主程式類別
         block2Transactions.add(record4); // 將第 4 筆交易加入區塊 2 清單
         block2Transactions.add(record5); // 將第 5 筆交易加入區塊 2 清單
 
-        // 4. 建立區塊鏈
+        //  建立區塊鏈
       
 
         Blockchain blockchain = new Blockchain(3); // 建立區塊鏈，難度設為 3
 
        
-        // 5. 將兩批交易分別加入成兩個新區塊
+        //  將兩批交易分別加入成兩個新區塊
        
         blockchain.addBlock(block1Transactions); // 加入第一個正式區塊
         blockchain.addBlock(block2Transactions); // 加入第二個正式區塊
 
         
-        // 6. 印出整條鏈
+        // 印出整條鏈
        
 
         blockchain.printChain(); // 顯示整條區塊鏈的所有內容
 
        
-        // 7. 驗證區塊鏈是否合法
+        //  驗證區塊鏈是否合法
        
 
         System.out.println("\n=== 驗證區塊鏈 ===");
@@ -145,7 +145,7 @@ public class Main { // 主程式類別
         System.out.println("竄改前驗證結果：" + isValidBeforeTamper); // 印出驗證結果
 
         
-        // 8. 模擬竄改資料
+        // 竄改資料
        
 
         boolean demoMode = true; // 控制是否模擬攻擊
@@ -160,7 +160,7 @@ public class Main { // 主程式類別
         }
 
         
-        // 9. 再次驗證區塊鏈
+        // 再次驗證區塊鏈
        
 
         System.out.println("\n=== 再次驗證區塊鏈 ===");
