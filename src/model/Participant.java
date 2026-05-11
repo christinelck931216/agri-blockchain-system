@@ -1,18 +1,18 @@
-package model; // 代表這個類別放在 model 套件中
+package model; // 宣告此類別位於 model 套件中
 
 public class Participant { // 宣告 Participant 類別，代表供應鏈中的參與者
 
-    private String participantId; // 參與者編號，例如 F001、R001
-    private String participantName; // 參與者名稱，例如 王小明、台北超市
+    private String participantId; // 參與者編號，例如 F001、P001、T001、R001
+    private String participantName; // 參與者名稱，例如 王小明、某某包裝廠、某某物流
     private String role; // 角色，例如 農民、包裝商、運輸商、零售商
     private String contactInfo; // 聯絡資訊，例如電話或 Email
-    private String location; // 所在地，例如 雲林、台中
+    private String location; // 所在地，例如 雲林、台中、屏東
 
-    // 建構子：建立 Participant 物件時使用
+    // 建構子：建立 Participant 物件時執行
     public Participant(String participantId, String participantName, String role, String contactInfo, String location) {
         this.participantId = participantId; // 設定參與者編號
         this.participantName = participantName; // 設定參與者名稱
-        this.role = role; // 設定角色
+        this.role = role; // 設定參與者角色
         this.contactInfo = contactInfo; // 設定聯絡資訊
         this.location = location; // 設定所在地
     }
@@ -67,7 +67,7 @@ public class Participant { // 宣告 Participant 類別，代表供應鏈中的�
         this.location = location;
     }
 
-    // 覆寫 toString 方法，讓物件印出時更容易閱讀
+    // 覆寫 toString 方法，方便測試時印出參與者資料
     @Override
     public String toString() {
         return "Participant{" +

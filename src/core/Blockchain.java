@@ -20,14 +20,10 @@ public class Blockchain { // 宣告 Blockchain 類別，代表整條區塊鏈
 
     // 建立創世區塊（第一個區塊）
     private Block createGenesisBlock() {
-        // 創世區塊沒有前一個區塊，所以 previousHash 先設為 0
-        // 交易紀錄先給一個空清單
         List<TransactionRecord> genesisTransactions = new ArrayList<>();
 
-        // 建立創世區塊
         Block genesisBlock = new Block(0, genesisTransactions, "0");
 
-        // 創世區塊也可以進行簡單挖礦，讓格式一致
         genesisBlock.mineBlock(difficulty);
 
         return genesisBlock;
@@ -40,29 +36,33 @@ public class Blockchain { // 宣告 Blockchain 類別，代表整條區塊鏈
 
     // 新增一個新區塊
     public void addBlock(List<TransactionRecord> transactions) {
-        // 新區塊的 index = 目前鏈長度
         int newIndex = chain.size();
 
-        // 新區塊要連到前一個區塊的 hash
         String previousHash = getLatestBlock().getHash();
 
-        // 建立新區塊
         Block newBlock = new Block(newIndex, transactions, previousHash);
 
-        // 做簡單挖礦
         newBlock.mineBlock(difficulty);
 
-        // 加入鏈中
         chain.add(newBlock);
+
+        // 注意：
+        // 這裡不要 System.out.println()
+        // 因為後端 Node.js 會用 JSON.parse(stdout)
+        // Java 只能輸出 Main.java 最後那一行 JSON
     }
 
     // 印出整條區塊鏈
     public void printChain() {
+        // 後端串接版本不要輸出任何文字
+        // 原本內容先保留註解，避免影響 JSON.parse
+        /*
         System.out.println("\n================ 區塊鏈內容 ================");
         for (Block block : chain) {
             block.printBlock();
         }
         System.out.println("===========================================");
+        */
     }
 
     // 回傳整條鏈
@@ -80,7 +80,7 @@ public class Blockchain { // 宣告 Blockchain 類別，代表整條區塊鏈
         return difficulty;
     }
 
-    // 設定挖礦難度
+    // 設定挖礦難[簡單來說就是強制HASH開頭要是00(自訂)如果算出來不是就在重新算一次] 
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
